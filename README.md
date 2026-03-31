@@ -22,20 +22,22 @@ this repository contains my ds 4320 project 1 on predicting nfl regular-season g
 
 ### Rationale for Refinement
 
-the original problem is too broad because sports outcomes vary widely across leagues, scoring systems, roster structures, and data availability. narrowing the problem to nfl regular-season games creates a more coherent domain with a consistent schedule structure, standardized team identities, and widely available historical data. it also makes the modeling task more realistic because the prediction target can be clearly defined as a binary outcome: home-team win or non-win.
+I refined the general problem of predicting sports game outcomes into predicting NFL regular-season game outcomes because the original problem was too broad to be practical for a focused data science project. “Sports games” could include football, basketball, baseball, soccer, hockey, and many others, all of which have different rules, scoring systems, season structures, and statistical patterns. Trying to build one project that applies to all sports would make it hard to define useful variables, select a consistent dataset, or explain what “success” means in a clear way.
 
-this refined version is also a better fit for the relational-model requirement. nfl data naturally separates into multiple connected entities such as teams, games, team-game records, and matchup-level features. that makes it possible to build a dataset that is both analytically useful and structurally aligned with the project goal of creating a fully established secondary dataset using the relational model.
+By narrowing the topic to the NFL, the project becomes much more realistic and better defined. The NFL has a standardized schedule structure, a manageable number of teams, a clear win/loss outcome for each game, and a strong existing analytics culture. The league also has many accessible team- and game-level statistics that can be used to study performance before a game takes place. In addition, football analytics increasingly uses advanced measures such as Expected Points Added (EPA), win probability, tracking-based metrics from Next Gen Stats, and opponent-adjusted efficiency measures such as DVOA. These metrics make it possible to move beyond simple win-loss records and better capture how strong a team actually is. That makes the NFL a strong and well-supported environment for a prediction project like this.
 
 ### Motivation
 
-there are practical and analytical reasons to study pregame nfl prediction. in sports analytics, teams, media, and fans all care about what factors matter before a game starts, not only what explains the result afterward. a pregame model is useful because it forces careful attention to temporal ordering and leakage: the features must be based only on information known before the game. this creates a more honest predictive setting than many retrospective sports analyses.
+I chose this project because football is one of the subjects I care most about, and I want to build toward a future career in the NFL. More specifically, I hope to work toward becoming a coach in the league, and ideally even the first female head coach in the NFL. Because of that, this project is not just an academic exercise for me. It connects directly to something I genuinely care about and want to understand at a deeper level.
 
-this project is also motivating because it connects ideas from data engineering, database design, and machine learning. the final goal is not just to fit a model, but to show how raw source data can be transformed into a reusable relational dataset with explicit metadata, uncertainty discussion, and reproducible analytical steps.
+This project also matters to me because football is often discussed emotionally and based on intuition, but successful teams increasingly use analytics to support preparation, game planning, player evaluation, and decision-making. I want to understand that side of the sport better. Building a project around NFL game prediction would help me learn which factors actually matter when evaluating teams before a game, how to think critically about performance rather than relying only on record or reputation, and how data can support strategic football thinking. It would also help me practice turning a broad passion into a specific, structured problem that can be studied with data. In that sense, the project is both personally meaningful and professionally relevant.
+
+Another reason I am motivated by this topic is that NFL analytics has become a major part of modern football culture. The NFL’s own football operations and analytics resources show how tracking data, advanced metrics, and data-driven evaluation are increasingly part of how the game is studied and understood. That makes this project feel current, useful, and connected to the real direction of the sport.
 
 ### Press Release Headline & Link
 
 **Headline:** *New NFL Data Pipeline Turns Pregame Team Form Into Game-day Predictions*  
-**Press Release:** [press_release.md](press_release.md)
+**Link to Press Release:** [press_release.md](press_release.md)
 
 ## Domain Exposition
 
