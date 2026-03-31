@@ -4,11 +4,11 @@
 
 this repository contains my ds 4320 project 1 on predicting nfl regular-season game outcomes using a relational secondary dataset built from nflverse source data. the project refines the broad problem of predicting sports game outcomes into a specific pregame classification task: predicting whether the home team will win, using only information that would have been available before kickoff. the repository includes the project documentation, background readings, a separate press release, a linked data folder, and a reproducible pipeline in python, markdown, and sql.
 
-**name:** [your name]  
-**netid:** [your netid]  
-**doi:** [your doi]  
+**name:** Jolie Ng  
+**netid:** xhh6fb 
+**doi:** CREATE DOI
 **press release:** [press_release.md](press_release.md)  
-**data:** [uva onedrive data folder](replace-with-your-onedrive-link)  
+**data:** [uva onedrive data folder](REPLACE-onedrive-link)  
 **pipeline:** [pipeline/project_1_pipeline.ipynb](pipeline/project_1_pipeline.ipynb)  
 **license:** [mit license](license)
 
