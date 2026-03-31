@@ -6,10 +6,10 @@ this repository contains my ds 4320 project 1 on predicting nfl regular-season g
 
 **Name:** Jolie Ng  
 **NetID:** xhh6fb  
-**DOI:** CREATE DOI  
+**DOI:** FIX THIS
 **Press Release:** [press_release.md](press_release.md)  
-**Data:** [UVA OneDrive data folder](REPLACE-onedrive-link)  
-**Pipeline:** [pipeline/project_1_pipeline.ipynb](pipeline/project_1_pipeline.ipynb)  
+**Data:** FIX THIS [UVA OneDrive data folder](REPLACE-onedrive-link)  
+**Pipeline:** FIX THIS [pipeline/project_1_pipeline.ipynb](pipeline/project_1_pipeline.ipynb)  
 **License:** [MIT license](LICENSE)
 
 ## Problem Definition
