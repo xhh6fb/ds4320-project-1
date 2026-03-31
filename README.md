@@ -126,7 +126,7 @@ A third critical decision was to use both a logistic-regression baseline and a r
 
 ## Metadata
 
-### Schema ER Diagram
+### Schema ER Diagram FIX
 
 ```text
 teams
