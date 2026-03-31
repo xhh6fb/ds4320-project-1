@@ -1,15 +1,15 @@
-# DS 4320 Project 1: Predicting NFL Home-Team Wins
+# DS 4320 Project 1: Predicting NFL Pregame Home-Team Win Probability
 
 ## Executive Summary
 
-this repository contains my ds 4320 project 1 on predicting nfl regular-season game outcomes using a relational secondary dataset built from nflverse source data. the project refines the broad problem of predicting sports game outcomes into a specific pregame classification task: predicting whether the home team will win, using only information that would have been available before kickoff. the repository includes the project documentation, background readings, a separate press release, a linked data folder, and a reproducible pipeline in python, markdown, and sql.
+This repository contains my DS 4320 Project 1 on predicting NFL regular-season game outcomes using a relational secondary dataset built from nflverse data accessed through the `nflreadpy` Python package. The project refines the broad problem of predicting sports game outcomes into a specific pregame classification task: estimating the probability that the home team will win an NFL regular-season game using only information available before kickoff. The repository includes the project documentation, a separate press release, background readings, a linked data folder, SQL queries, Python scripts for data creation, and a reproducible modeling pipeline in Python, Markdown, and SQL.
 
 **Name:** Jolie Ng  
 **NetID:** xhh6fb  
 **DOI:** FIX THIS
 **Press Release:** [press_release.md](press_release.md)  
 **Data:** FIX THIS [UVA OneDrive data folder](REPLACE-onedrive-link)  
-**Pipeline:** FIX THIS [pipeline/project_1_pipeline.ipynb](pipeline/project_1_pipeline.ipynb)  
+**Pipeline:** FIX THIS [pipeline/project_1_pipeline.ipynb](pipeline/project_1_pipeline.ipynb) and [pipeline/project_1_pipeline.md](pipeline/project_1_pipeline.md)  
 **License:** [MIT license](LICENSE)
 
 ## Problem Definition
