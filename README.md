@@ -16,13 +16,9 @@ this repository contains my ds 4320 project 1 on predicting nfl regular-season g
 
 ### Initial General Problem & Refined Specific Problem Statement
 
-**Initial General Problem:**
+**Initial General Problem:** Elite soccer teams need better ways to use athlete monitoring data to protect player health while maintaining performance.
 
-Elite soccer teams need better ways to use athlete monitoring data to protect player health while maintaining performance.
-
-**Refined Specific Problem Statement:**
-
-Using the SoccerMon dataset, my project will focus on an injury-risk early warning problem: identifying whether short-term changes in self-reported wellness and recent external workload patterns are associated with increased risk of a player reporting an injury in the near future. The goal of this project isn't necesarily to diagnose injury, but instead it should be used to support staff in recognizing when a player may need adjusted training, extra recovery, or closer monitoring.
+**Refined Specific Problem Statement:** Using the SoccerMon dataset, my project will focus on an injury-risk early warning problem: identifying whether short-term changes in self-reported wellness and recent external workload patterns are associated with increased risk of a player reporting an injury in the near future. The goal of this project isn't necesarily to diagnose injury, but instead it should be used to support staff in recognizing when a player may need adjusted training, extra recovery, or closer monitoring.
 
 ### Rationale for Refinement
 
