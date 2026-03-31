@@ -16,9 +16,9 @@ this repository contains my ds 4320 project 1 on predicting nfl regular-season g
 
 ### Initial General Problem & Refined Specific Problem Statement
 
-**Initial General Problem:** Elite soccer teams need better ways to use athlete monitoring data to protect player health while maintaining performance.
+**Initial General Problem:** Predicting sports game win/loss outcomes.
 
-**Refined Specific Problem Statement:** Using the SoccerMon dataset, my project will focus on an injury-risk early warning problem: identifying whether short-term changes in self-reported wellness and recent external workload patterns are associated with increased risk of a player reporting an injury in the near future. The goal of this project isn't necesarily to diagnose injury, but instead it should be used to support staff in recognizing when a player may need adjusted training, extra recovery, or closer monitoring.
+**Refined Specific Problem Statement:** Develop a data-driven system that predicts the outcomes of NFL regular-season games by estimating which team is more likely to win based on historical team performance, opponent quality, game location, rest, scoring efficiency, turnover trends, and other football-related indicators available before kickoff. This refined problem focuses specifically on NFL regular-season games rather than all sports or even all football games. It limits the project to one league with a fixed structure, a consistent schedule format, and a large amount of historical data. It also clearly defines the target of the prediction: the winner of a game, or more generally each team's probability of winning before the game begins.
 
 ### Rationale for Refinement
 
