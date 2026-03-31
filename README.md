@@ -110,23 +110,21 @@ https://drive.google.com/drive/folders/1DmNz53sf4Q_i9nTIDYbz9nB2Qzlk0tSc?usp=sha
 | 7 | Neural Network Models for Predicting NFL Play Outcomes | A Stanford paper that uses neural networks to predict play outcomes from pre-snap game state information. |
 | 8 | NFL Score Difference Prediction with Markov Modeling | A Stanford report that models NFL score difference prediction using a Markov approach. Useful for thinking about game-level outcome prediction. |
 
-### Background Reading Links
-
-1. [predicting the outcome of nfl games using logistic regression](https://scholars.unh.edu/cgi/viewcontent.cgi?article=1472&context=honors)  
-2. [modeling nfl football outcomes](https://www.researchgate.net/publication/368564164_MODELING_NFL_FOOTBALL_OUTCOMES)  
-3. [the effect of attendance on home field advantage in the nfl](https://surface.syr.edu/context/sportmanagement/article/1057/viewcontent/NFL_home_field_advantage_Preprint.pdf)  
-4. [is the nfl betting market efficient?](https://econ.berkeley.edu/sites/default/files/Kuper.pdf)  
-5. [elo model convergence](https://myweb.ecu.edu/robbinst/PDFs/Elo%20Model%20Convergence%20Final.pdf)
-
 ## Data Creation
 
-### Provenance
+### Provenance FIX
 
 the raw data for this project were obtained from the nflverse ecosystem using the `nflreadpy` python package. `nflreadpy` provides programmatic access to nflverse releases, including team metadata and schedules. i used `load_teams()` to obtain the team reference data and `load_schedules()` to obtain regular-season schedules and results across multiple seasons.
 
 after loading the source data, i transformed them into a relational secondary dataset with four linked tables. first, i created a `teams` table to store team identifiers and descriptive metadata. second, i created a `games` table with one row per completed regular-season game. third, i created a `team_games` table with one row per team per game so that rolling prior features could be calculated separately for each team. fourth, i created a `matchups` table with one row per game containing the pregame home and away features and the binary target variable.
 
-### Data Creation Code
+For the section, I continued my project on predicting NFL regular-season game outcomes. To create the data for this section, I used public NFL data available through Python and transformed those data into a relational structure suitable for database querying and predictive modeling.
+
+The resulting project dataset contains four linked tables. First, I created a `teams` table to store team-level reference information. Second, I created a `games` table with one row per regular-season game. Third, I created a `team_games` table with one row per team per game so that rolling pregame summaries could be calculated. Fourth, I created a `matchups` table with one row per game containing pregame home and away features and the target variable. This follows the project rubric’s requirement that the dataset be constructed using the relational model with a minimum of four tables.
+
+### Data Creation Code FIX
+
+The raw NFL data were loaded from the `nflreadpy` package, but the relational project tables and proof-of-concept pipeline were created by my own code in this notebook. The package provided the source data; the cleaning, reshaping, feature engineering, table creation, SQL loading, querying, and modeling steps were my own work.
 
 | file | what it does | link/path |
 |---|---|---|
@@ -135,21 +133,21 @@ after loading the source data, i transformed them into a relational secondary da
 
 ### Bias Identification
 
-bias can enter this dataset through both source coverage and modeling simplification. the source data do not capture every pregame factor that may affect nfl outcomes, such as injuries, late roster changes, weather severity, travel fatigue, or quarterback uncertainty. because the model uses mainly prior results and rest patterns, it may over-credit teams whose past outcomes were shaped by unusually weak schedules or temporary conditions.
+Bias can enter this dataset through both the source data and the simplified feature choices. Team outcomes are affected by injuries, weather, quarterback changes, coaching, travel, and strength of opponent, but not all of these are represented in a schedule-based dataset. As a result, the model may assign too much importance to past scores or win percentage while missing important contextual factors.
 
-another important source of bias is temporal leakage. if features were built using information from the current game or future games, model performance would be falsely inflated. there is also selection bias because the project focuses only on completed regular-season games and excludes playoff games and other football contexts.
+Another major source of bias is temporal leakage. If any feature accidentally includes information from the current game or from future games, then the model would be misleadingly strong. There is also selection bias because the project only focuses on regular-season NFL games rather than all football competitions.
 
 ### Bias Mitigation
 
-to reduce bias, all rolling features are constructed using only games that occurred earlier in the same season for the same team. this preserves temporal ordering and limits leakage. i also keep the modeling target narrow and explicit: completed nfl regular-season games only. that avoids blending multiple competition types with different incentives and structures.
+To reduce bias, I construct all rolling features using only information available before the game being predicted. This means that win percentage, prior scoring averages, and prior point differential are based only on earlier games for that team. I also exclude non-regular-season games to keep the target problem aligned with the stated project goal.
 
-i also make the dataset more auditable by saving intermediate relational tables rather than only a single final modeling table. this makes it easier to inspect how features were created and how uncertainty entered at each stage. finally, i evaluate the model using later seasons as the test set rather than random shuffling, which better reflects a real forecasting setting.
+Bias is also reduced by using a relational design with saved intermediate tables, which makes the feature engineering process easier to inspect and debug. Finally, I evaluate the proof-of-concept model using later seasons as a test set rather than random shuffling, because that better reflects the real forecasting setting.
 
 ### Rationale for Critical Decisions
 
-the most important design choice was to use a four-table relational structure instead of one flattened file. the project goal is not just prediction; it is to create a fully established secondary dataset using the relational model. separating teams, games, team-games, and matchups keeps the data organized around meaningful entities and prevents the feature-engineering logic from being hidden inside one opaque table.
+A major critical decision was to structure the data into four linked tables because the rubric requires a relational dataset with at least four tables. I created `teams`, `games`, `team_games`, and `matchups` to satisfy that requirement while also making the pipeline easier to understand and query.
 
-another important judgment call was feature scope. for this first project version, i deliberately limited the feature set to interpretable pregame summaries: prior win percentage, prior average points scored, prior average points allowed, prior average point differential, and rest days. richer feature sets could improve performance, but starting with transparent, leakage-resistant features gives a more defensible baseline and makes the uncertainty in the analysis easier to explain.
+Another important decision was to use transparent pregame schedule-derived features at this stage rather than richer but more complicated features. This reduces the risk of leakage, keeps the model explainable, and provides a reasonable proof of concept for the homework even though it is not yet the most advanced possible solution.
 
 ## Metadata
 
@@ -228,10 +226,100 @@ days_rest_diff
 target_home_win
 ```
 
-### Data Dictionary: Table
+### Data Table FIX/ADD LINK
 
-ADD TABLE
+| Table | Description | CSV file |
+|---|---|---|
+| teams | Team reference table | `teams.csv` |
+| games | One row per NFL regular-season game | `games.csv` |
+| team_games | One row per team per game with rolling pregame features | `team_games.csv` |
+| matchups | One row per game for prediction modeling | `matchups.csv` |
 
-### Data Dictionary: Quantification of Uncertainty
+### Data Dictionary
 
-ADD TABLE
+#### teams
+
+| Feature | Data type | Description | Example |
+|---|---|---|---|
+| team_id | string | Team abbreviation used as key | BAL |
+| team_name | string | Full team name | Baltimore Ravens |
+| team_nick | string | Team nickname if available | Ravens |
+| team_conf | string | Conference | AFC |
+| team_division | string | Division | AFC North |
+
+#### games
+
+| Feature | Data type | Description | Example |
+|---|---|---|---|
+| game_id | string | Unique game identifier | 2023_01_BAL_HOU |
+| season | integer | NFL season year | 2023 |
+| week | integer | Regular-season week number | 1 |
+| gameday | date | Date of game | 2023-09-10 |
+| home_team | string | Home team ID | BAL |
+| away_team | string | Away team ID | HOU |
+| home_score | integer | Home final score | 25 |
+| away_score | integer | Away final score | 9 |
+| home_win | integer | 1 if home team won, else 0 | 1 |
+| winner_team | string | Winner team ID | BAL |
+
+#### team_games
+
+| Feature | Data type | Description | Example |
+|---|---|---|---|
+| game_id | string | Foreign key to game | 2023_01_BAL_HOU |
+| team_id | string | Team for the row | BAL |
+| opponent_team | string | Opponent team ID | HOU |
+| season | integer | Season year | 2023 |
+| week | integer | Week number | 1 |
+| gameday | date | Game date | 2023-09-10 |
+| is_home | integer | 1 if home, 0 if away | 1 |
+| points_for | integer | Points scored by team | 25 |
+| points_against | integer | Points allowed by team | 9 |
+| win | integer | 1 if team won | 1 |
+| games_played_before | integer | Number of prior games | 0 |
+| cum_wins_before | integer | Prior cumulative wins | 0 |
+| cum_losses_before | integer | Prior cumulative losses | 0 |
+| pregame_win_pct | float | Win percentage before this game | 0.500 |
+| pregame_points_for_pg | float | Prior scoring average | 0.0 |
+| pregame_points_against_pg | float | Prior allowed average | 0.0 |
+| pregame_point_diff_pg | float | Prior point differential average | 0.0 |
+| days_rest | float | Days since previous game | 7.0 |
+
+#### matchups
+
+| Feature | Data type | Description | Example |
+|---|---|---|---|
+| game_id | string | Unique game identifier | 2023_01_BAL_HOU |
+| season | integer | Season year | 2023 |
+| week | integer | Week number | 1 |
+| gameday | date | Date | 2023-09-10 |
+| home_team | string | Home team ID | BAL |
+| away_team | string | Away team ID | HOU |
+| home_pregame_win_pct | float | Home pregame win percentage | 0.500 |
+| away_pregame_win_pct | float | Away pregame win percentage | 0.500 |
+| home_pregame_points_for_pg | float | Home pregame scoring average | 0.0 |
+| away_pregame_points_for_pg | float | Away pregame scoring average | 0.0 |
+| home_pregame_points_against_pg | float | Home pregame allowed average | 0.0 |
+| away_pregame_points_against_pg | float | Away pregame allowed average | 0.0 |
+| home_pregame_point_diff_pg | float | Home pregame point differential average | 0.0 |
+| away_pregame_point_diff_pg | float | Away pregame point differential average | 0.0 |
+| home_days_rest | float | Home rest days | 7.0 |
+| away_days_rest | float | Away rest days | 7.0 |
+| pregame_win_pct_diff | float | Home minus away win percentage | 0.0 |
+| pregame_points_for_pg_diff | float | Home minus away scoring average | 0.0 |
+| pregame_points_against_pg_diff | float | Home minus away allowed average | 0.0 |
+| pregame_point_diff_pg_diff | float | Home minus away point differential average | 0.0 |
+| days_rest_diff | float | Home minus away rest days | 0.0 |
+| target_home_win | integer | Prediction target | 1 |
+
+### Quantification of Uncertainty *NOTE: quantitative/numeric estimate of uncertainty not given
+
+| Numerical feature | Uncertainty discussion |
+|---|---|
+| home_score / away_score / points_for / points_against | These are official recorded scores, but their predictive meaning is still influenced by context not fully represented in the data. |
+| pregame_win_pct | Deterministic from prior games, but unstable early in the season because it is based on few observations. |
+| pregame_points_for_pg | Early-season averages are noisier because one unusual game can strongly affect the value. |
+| pregame_points_against_pg | Same issue as above. |
+| pregame_point_diff_pg | Inherits uncertainty from the underlying scoring averages. |
+| days_rest | Exact from dates, but it does not capture travel quality, injury recovery, or hidden team circumstances. |
+| difference features | Deterministic transformations of prior features, but their predictive usefulness may vary across seasons and situations. |
