@@ -87,9 +87,9 @@ This project lives in the domain of **sports analytics**, and more specifically 
 
 The NFL is also especially relevant as a sports analytics domain because it now includes both traditional statistics and much more advanced forms of data collection. The league’s Next Gen Stats system uses tracking technology to capture player movement and support advanced analysis. Public football analytics also increasingly uses concepts such as EPA, win probability, and opponent-adjusted efficiency metrics like DVOA. These ideas reflect the fact that football performance is complicated: two teams may have the same record but be very different in actual strength, consistency, or efficiency. A project like this belongs in the football analytics domain because it uses measurable information to estimate future game outcomes in a way that could support preparation, evaluation, and decision-making.
 
-### Background Reading
+### Background Reading FIX
 
-https://drive.google.com/drive/folders/1DmNz53sf4Q_i9nTIDYbz9nB2Qzlk0tSc?usp=sharing
+https://drive.google.com/drive/folders/1DmNz53sf4Q_i9nTIDYbz9nB2Qzlk0tSc?usp=sharing  
 
 | index | title | brief description | file in folder |
 |---|---|---|---|
@@ -98,6 +98,17 @@ https://drive.google.com/drive/folders/1DmNz53sf4Q_i9nTIDYbz9nB2Qzlk0tSc?usp=sha
 | 3 | the effect of attendance on home field advantage in the nfl | study of home-field effects and how attendance relates to them | `03_nfl_home_field_advantage.pdf` |
 | 4 | is the nfl betting market efficient? | economics paper on whether nfl betting prices are efficient | `04_nfl_betting_market_efficiency.pdf` |
 | 5 | elo model convergence | paper comparing elo-style prediction ideas, including nfl-related forecasting context | `05_elo_model_convergence_nfl.pdf` |
+
+| # | Title | Brief description |
+|---|---|---|
+| 1 | Footballonomics: The Anatomy of American Football; Evidence from 7 years of NFL game data | A research paper using several years of NFL data to study football outcomes and performance patterns. Useful for understanding how large-scale NFL data can support analytical conclusions. |
+| 2 | nflWAR: A Reproducible Method for Offensive Player Evaluation in Football | A well-known football analytics paper that builds a reproducible framework for offensive player evaluation using expected points and win probability ideas. |
+| 3 | Moving from Machine Learning to Statistics: the case of Expected Points in American football | A recent paper focused on expected points modeling in American football and the statistical issues involved in building these models well. |
+| 4 | PEP: a tackle value measuring the prevention of expected points | A paper that develops a defensive football metric based on prevented expected points using tracking-style ideas and modeling. |
+| 5 | NFL Play Prediction | A paper about predicting the outcome of an NFL play using multiple machine learning methods. Useful for understanding football prediction at the play level. |
+| 6 | Deep Learning for In-Game NFL Predictions | A Stanford report that explores deep learning methods for predicting in-game NFL play outcomes. |
+| 7 | Neural Network Models for Predicting NFL Play Outcomes | A Stanford paper that uses neural networks to predict play outcomes from pre-snap game state information. |
+| 8 | NFL Score Difference Prediction with Markov Modeling | A Stanford report that models NFL score difference prediction using a Markov approach. Useful for thinking about game-level outcome prediction. |
 
 ### Background Reading Links
 
