@@ -203,100 +203,106 @@ days_rest_diff
 target_home_win
 ```
 
-### Data Table FIX/ADD LINK
+### Data Table FIX
 
 | Table | Description | CSV file |
 |---|---|---|
-| teams | Team reference table | `teams.csv` |
-| games | One row per NFL regular-season game | `games.csv` |
-| team_games | One row per team per game with rolling pregame features | `team_games.csv` |
-| matchups | One row per game for prediction modeling | `matchups.csv` |
+| `teams` | Team reference table containing identifiers and metadata | `data/teams.csv` |
+| `games` | One row per completed NFL regular-season game | `data/games.csv` |
+| `team_games` | One row per team per game with rolling leakage-safe pregame features | `data/team_games.csv` |
+| `matchups` | One row per game for final prediction modeling | `data/matchups.csv` |
 
 ### Data Dictionary
 
-#### teams
+#### `teams`
 
 | Feature | Data type | Description | Example |
 |---|---|---|---|
-| team_id | string | Team abbreviation used as key | BAL |
-| team_name | string | Full team name | Baltimore Ravens |
-| team_nick | string | Team nickname if available | Ravens |
-| team_conf | string | Conference | AFC |
-| team_division | string | Division | AFC North |
+| `team_id` | string | Team abbreviation used as key | `BAL` |
+| `team_name` | string | Full team name | `Baltimore Ravens` |
+| `team_nick` | string | Team nickname | `Ravens` |
+| `team_conf` | string | Conference | `AFC` |
+| `team_division` | string | Division | `AFC North` |
 
-#### games
-
-| Feature | Data type | Description | Example |
-|---|---|---|---|
-| game_id | string | Unique game identifier | 2023_01_BAL_HOU |
-| season | integer | NFL season year | 2023 |
-| week | integer | Regular-season week number | 1 |
-| gameday | date | Date of game | 2023-09-10 |
-| home_team | string | Home team ID | BAL |
-| away_team | string | Away team ID | HOU |
-| home_score | integer | Home final score | 25 |
-| away_score | integer | Away final score | 9 |
-| home_win | integer | 1 if home team won, else 0 | 1 |
-| winner_team | string | Winner team ID | BAL |
-
-#### team_games
+#### `games`
 
 | Feature | Data type | Description | Example |
 |---|---|---|---|
-| game_id | string | Foreign key to game | 2023_01_BAL_HOU |
-| team_id | string | Team for the row | BAL |
-| opponent_team | string | Opponent team ID | HOU |
-| season | integer | Season year | 2023 |
-| week | integer | Week number | 1 |
-| gameday | date | Game date | 2023-09-10 |
-| is_home | integer | 1 if home, 0 if away | 1 |
-| points_for | integer | Points scored by team | 25 |
-| points_against | integer | Points allowed by team | 9 |
-| win | integer | 1 if team won | 1 |
-| games_played_before | integer | Number of prior games | 0 |
-| cum_wins_before | integer | Prior cumulative wins | 0 |
-| cum_losses_before | integer | Prior cumulative losses | 0 |
-| pregame_win_pct | float | Win percentage before this game | 0.500 |
-| pregame_points_for_pg | float | Prior scoring average | 0.0 |
-| pregame_points_against_pg | float | Prior allowed average | 0.0 |
-| pregame_point_diff_pg | float | Prior point differential average | 0.0 |
-| days_rest | float | Days since previous game | 7.0 |
+| `game_id` | string | Unique game identifier | `2023_W01_HOU_at_BAL` |
+| `season` | integer | NFL season year | `2023` |
+| `week` | integer | Regular-season week number | `1` |
+| `gameday` | date | Date of game | `2023-09-10` |
+| `home_team` | string | Home team ID | `BAL` |
+| `away_team` | string | Away team ID | `HOU` |
+| `home_score` | integer | Home final score | `25` |
+| `away_score` | integer | Away final score | `9` |
+| `home_win` | integer | 1 if home team won, else 0 | `1` |
+| `winner_team` | string | Winner team ID | `BAL` |
 
-#### matchups
+#### `team_games`
 
 | Feature | Data type | Description | Example |
 |---|---|---|---|
-| game_id | string | Unique game identifier | 2023_01_BAL_HOU |
-| season | integer | Season year | 2023 |
-| week | integer | Week number | 1 |
-| gameday | date | Date | 2023-09-10 |
-| home_team | string | Home team ID | BAL |
-| away_team | string | Away team ID | HOU |
-| home_pregame_win_pct | float | Home pregame win percentage | 0.500 |
-| away_pregame_win_pct | float | Away pregame win percentage | 0.500 |
-| home_pregame_points_for_pg | float | Home pregame scoring average | 0.0 |
-| away_pregame_points_for_pg | float | Away pregame scoring average | 0.0 |
-| home_pregame_points_against_pg | float | Home pregame allowed average | 0.0 |
-| away_pregame_points_against_pg | float | Away pregame allowed average | 0.0 |
-| home_pregame_point_diff_pg | float | Home pregame point differential average | 0.0 |
-| away_pregame_point_diff_pg | float | Away pregame point differential average | 0.0 |
-| home_days_rest | float | Home rest days | 7.0 |
-| away_days_rest | float | Away rest days | 7.0 |
-| pregame_win_pct_diff | float | Home minus away win percentage | 0.0 |
-| pregame_points_for_pg_diff | float | Home minus away scoring average | 0.0 |
-| pregame_points_against_pg_diff | float | Home minus away allowed average | 0.0 |
-| pregame_point_diff_pg_diff | float | Home minus away point differential average | 0.0 |
-| days_rest_diff | float | Home minus away rest days | 0.0 |
-| target_home_win | integer | Prediction target | 1 |
+| `game_id` | string | Foreign key to game | `2023_W01_HOU_at_BAL` |
+| `team_id` | string | Team for the row | `BAL` |
+| `opponent_team` | string | Opponent team ID | `HOU` |
+| `season` | integer | Season year | `2023` |
+| `week` | integer | Week number | `1` |
+| `gameday` | date | Game date | `2023-09-10` |
+| `is_home` | integer | 1 if home, 0 if away | `1` |
+| `points_for` | integer | Points scored by team | `25` |
+| `points_against` | integer | Points allowed by team | `9` |
+| `win` | integer | 1 if team won, else 0 | `1` |
+| `games_played_before` | integer | Number of prior games entering this game | `0` |
+| `cum_wins_before` | integer | Prior cumulative wins | `0` |
+| `cum_losses_before` | integer | Prior cumulative losses | `0` |
+| `cum_points_for_before` | integer | Prior cumulative points scored | `0` |
+| `cum_points_against_before` | integer | Prior cumulative points allowed | `0` |
+| `pregame_win_pct` | float | Win percentage before this game | `0.500` |
+| `pregame_points_for_pg` | float | Prior scoring average | `0.0` |
+| `pregame_points_against_pg` | float | Prior allowed average | `0.0` |
+| `pregame_point_diff_pg` | float | Prior point differential average | `0.0` |
+| `days_rest` | float | Days since previous game | `7.0` |
 
-### Quantification of Uncertainty *NOTE: quantitative/numeric estimate of uncertainty not given
+#### `matchups`
 
-| Numerical feature | Uncertainty discussion |
-|---|---|
-| home_score / away_score / points_for / points_against | These are official recorded scores, but their predictive meaning is still influenced by context not fully represented in the data. |
-| pregame_win_pct | Deterministic from prior games, but unstable early in the season because it is based on few observations. |
-| pregame_points_for_pg | Early-season averages are noisier because one unusual game can strongly affect the value. |
-| pregame_points_against_pg | Same issue as above. |
-| pregame_point_diff_pg | Inherits uncertainty from the underlying scoring averages. |
-| days_rest | Exact from dates, but it does not capture travel quality, injury recovery, or hidden team circumstances. |
-| difference features | Deterministic transformations of prior features, but their predictive usefulness may vary across seasons and situations. |
+| Feature | Data type | Description | Example |
+|---|---|---|---|
+| `game_id` | string | Unique game identifier | `2023_W01_HOU_at_BAL` |
+| `season` | integer | Season year | `2023` |
+| `week` | integer | Week number | `1` |
+| `gameday` | date | Game day | `2023-09-10` |
+| `home_team` | string | Home team ID | `BAL` |
+| `away_team` | string | Away team ID | `HOU` |
+| `home_score` | integer | Home final score | `25` |
+| `away_score` | integer | Away final score | `9` |
+| `home_win` | integer | 1 if home team won, else 0 | `1` |
+| `winner_team` | string | Winner team ID | `BAL` |
+| `home_pregame_win_pct` | float | Home-team win percentage entering game | `0.500` |
+| `away_pregame_win_pct` | float | Away-team win percentage entering game | `0.500` |
+| `home_pregame_points_for_pg` | float | Home-team prior scoring average | `0.0` |
+| `away_pregame_points_for_pg` | float | Away-team prior scoring average | `0.0` |
+| `home_pregame_points_against_pg` | float | Home-team prior points allowed average | `0.0` |
+| `away_pregame_points_against_pg` | float | Away-team prior points allowed average | `0.0` |
+| `home_pregame_point_diff_pg` | float | Home-team prior point differential average | `0.0` |
+| `away_pregame_point_diff_pg` | float | Away-team prior point differential average | `0.0` |
+| `home_days_rest` | float | Home-team days since previous game | `7.0` |
+| `away_days_rest` | float | Away-team days since previous game | `7.0` |
+| `pregame_win_pct_diff` | float | Home minus away pregame win percentage | `0.0` |
+| `pregame_points_for_pg_diff` | float | Home minus away prior scoring average | `0.0` |
+| `pregame_points_against_pg_diff` | float | Home minus away prior allowed average | `0.0` |
+| `pregame_point_diff_pg_diff` | float | Home minus away prior point differential average | `0.0` |
+| `days_rest_diff` | float | Home minus away days of rest | `0.0` |
+| `target_home_win` | integer | Final prediction target | `1` |
+
+### Quantification of Uncertainty for Numerical Features
+
+| Numerical feature | Source of uncertainty | Quantitative discussion |
+|---|---|---|
+| `home_score / away_score` | Officially recorded outcomes | These are observed final values, so measurement uncertainty is very low, but they are not prediction inputs in the final model because they occur after kickoff |
+| `pregame_win_pct` | Small-sample instability early in the season | When `games_played_before` is small, one result changes the estimate sharply; after 1 prior game the value can only be 0 or 1 |
+| `pregame_points_for_pg` | Sampling variation across prior games | Early-season estimates are noisier because one unusually high- or low-scoring game strongly changes the average |
+| `pregame_points_against_pg` | Sampling variation across prior games | Same issue as above; defensive estimates stabilize only after more games are observed |
+| `pregame_point_diff_pg` | Uncertainty inherited from two averages | Because it is based on prior points scored and prior points allowed, it compounds uncertainty from both values |
+| `days_rest` | Exact from dates, incomplete as a fatigue proxy | The value is measured deterministically from game dates, but it does not capture travel difficulty, injury recovery, or practice intensity |
+| `difference features` | Propagated uncertainty from both teams | Each home-minus-away feature combines uncertainty from two team-level estimates, especially in early weeks |
