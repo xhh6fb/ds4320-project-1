@@ -10,7 +10,7 @@ this repository contains my ds 4320 project 1 on predicting nfl regular-season g
 **press release:** [press_release.md](press_release.md)  
 **data:** [uva onedrive data folder](REPLACE-onedrive-link)  
 **pipeline:** [pipeline/project_1_pipeline.ipynb](pipeline/project_1_pipeline.ipynb)  
-**license:** [mit license](license)
+**license:** [mit license](LICENSE)
 
 ## problem definition
 
