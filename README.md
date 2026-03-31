@@ -14,28 +14,28 @@ this repository contains my ds 4320 project 1 on predicting nfl regular-season g
 
 ## Problem Definition
 
-### initial general problem and refined specific problem statement
+### Initial General Problem & Refined Specific Problem Statement
 
 the initial general problem is **predicting sports game outcomes**.
 
 the refined specific problem is: **predict whether the home team will win an nfl regular-season game using only pregame information available before kickoff, with features built from prior team performance and rest patterns.**
 
-### rationale for the refinement
+### Rationale for Refinement
 
 the original problem is too broad because sports outcomes vary widely across leagues, scoring systems, roster structures, and data availability. narrowing the problem to nfl regular-season games creates a more coherent domain with a consistent schedule structure, standardized team identities, and widely available historical data. it also makes the modeling task more realistic because the prediction target can be clearly defined as a binary outcome: home-team win or non-win.
 
 this refined version is also a better fit for the relational-model requirement. nfl data naturally separates into multiple connected entities such as teams, games, team-game records, and matchup-level features. that makes it possible to build a dataset that is both analytically useful and structurally aligned with the project goal of creating a fully established secondary dataset using the relational model.
 
-### motivation for the project
+### Motivation
 
 there are practical and analytical reasons to study pregame nfl prediction. in sports analytics, teams, media, and fans all care about what factors matter before a game starts, not only what explains the result afterward. a pregame model is useful because it forces careful attention to temporal ordering and leakage: the features must be based only on information known before the game. this creates a more honest predictive setting than many retrospective sports analyses.
 
 this project is also motivating because it connects ideas from data engineering, database design, and machine learning. the final goal is not just to fit a model, but to show how raw source data can be transformed into a reusable relational dataset with explicit metadata, uncertainty discussion, and reproducible analytical steps.
 
-### headline of press release and link
+### Press Release Headline & Link
 
-**Headline:** *New NFL Data Pipeline Turns Pregame Team form into game-day predictions*  
-[press_release.md](press_release.md)
+**Headline:** *New NFL Data Pipeline Turns Pregame Team Form Into Game-day Predictions*  
+**Press Release:** [press_release.md](press_release.md)
 
 ## Domain Exposition
 
