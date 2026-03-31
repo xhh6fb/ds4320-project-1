@@ -34,8 +34,8 @@ this project is also motivating because it connects ideas from data engineering,
 
 ### headline of press release and link
 
-**headline:** *new nfl data pipeline turns pregame team form into game-day predictions*  
-see [press_release.md](press_release.md)
+**Headline:** *New NFL Data Pipeline Turns Pregame Team form into game-day predictions*  
+[press_release.md](press_release.md)
 
 ## domain exposition
 
