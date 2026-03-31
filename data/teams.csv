@@ -1,0 +1,33 @@
+team_id,team_name,team_nick,team_conf,team_division
+0200,Atlanta Falcons,Falcons,NFC,NFC South
+0325,Baltimore Ravens,Ravens,AFC,AFC North
+0610,Buffalo Bills,Bills,AFC,AFC East
+0750,Carolina Panthers,Panthers,NFC,NFC South
+0810,Chicago Bears,Bears,NFC,NFC North
+0920,Cincinnati Bengals,Bengals,AFC,AFC North
+1050,Cleveland Browns,Browns,AFC,AFC North
+1200,Dallas Cowboys,Cowboys,NFC,NFC East
+1400,Denver Broncos,Broncos,AFC,AFC West
+1540,Detroit Lions,Lions,NFC,NFC North
+1800,Green Bay Packers,Packers,NFC,NFC North
+2100,Tennessee Titans,Titans,AFC,AFC South
+2120,Houston Texans,Texans,AFC,AFC South
+2200,Indianapolis Colts,Colts,AFC,AFC South
+2250,Jacksonville Jaguars,Jaguars,AFC,AFC South
+2310,Kansas City Chiefs,Chiefs,AFC,AFC West
+2510,Los Angeles Rams,Rams,NFC,NFC West
+2520,Las Vegas Raiders,Raiders,AFC,AFC West
+2700,Miami Dolphins,Dolphins,AFC,AFC East
+3000,Minnesota Vikings,Vikings,NFC,NFC North
+3200,New England Patriots,Patriots,AFC,AFC East
+3300,New Orleans Saints,Saints,NFC,NFC South
+3410,New York Giants,Giants,NFC,NFC East
+3430,New York Jets,Jets,AFC,AFC East
+3700,Philadelphia Eagles,Eagles,NFC,NFC East
+3800,Arizona Cardinals,Cardinals,NFC,NFC West
+3900,Pittsburgh Steelers,Steelers,AFC,AFC North
+4400,Los Angeles Chargers,Chargers,AFC,AFC West
+4500,San Francisco 49ers,49ers,NFC,NFC West
+4600,Seattle Seahawks,Seahawks,NFC,NFC West
+4900,Tampa Bay Buccaneers,Buccaneers,NFC,NFC South
+5110,Washington Commanders,Commanders,NFC,NFC East
