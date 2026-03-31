@@ -41,9 +41,9 @@ Another reason I am motivated by this topic is that NFL analytics has become a m
 
 ## Domain Exposition
 
-### Terminology
+### Terminology FIX
 
-| term | meaning in this project | why it matters |
+| Term | Meaning in this project | Why it matters |
 |---|---|---|
 | regular-season game | an nfl game that is part of the standard season schedule, excluding playoffs | keeps the prediction target consistent |
 | home-team win | a binary target equal to 1 if the home team scores more points than the away team | this is the main prediction outcome |
@@ -59,6 +59,27 @@ Another reason I am motivated by this topic is that NFL analytics has become a m
 | duckdb | an in-process analytical database used here for loading csv files and querying them with sql | satisfies the pipeline requirement and keeps the workflow reproducible |
 | logistic regression | a machine-learning classification model for binary outcomes | the proof-of-concept model used in the pipeline |
 | roc auc | a model-evaluation metric based on ranking predicted probabilities | helps assess classification quality beyond raw accuracy |
+
+| Term | Meaning in this project | Why it matters |
+|---|---|---|
+| NFL | National Football League | The league this project focuses on |
+| Outcome prediction | Predicting which team will win a game | This is the main goal of the project |
+| Target variable | The value the model is trying to predict | In this case, the game winner or win probability |
+| Feature | An input variable used by the model | Features may include points scored, turnovers, rest, or home field |
+| Regular season | The main scheduled NFL games before the playoffs | Keeps the project scope specific and consistent |
+| Home-field advantage | The advantage teams often have when playing at home | Home teams may perform differently than away teams |
+| Strength of schedule | A measure of how difficult a team’s opponents have been | Helps prevent misleading comparisons between records |
+| Point differential | Points scored minus points allowed | Often gives a stronger picture of team quality than record alone |
+| Turnover differential | Takeaways minus giveaways | Turnovers often have a major effect on game outcomes |
+| Offensive efficiency | How effectively a team scores or creates productive drives | Helps evaluate how strong an offense really is |
+| Defensive efficiency | How effectively a team prevents scoring or productive drives | Helps evaluate how strong a defense really is |
+| EPA | Expected Points Added | A play-based measure showing how much a play improves or hurts expected scoring |
+| Win probability | The estimated chance a team wins from a certain game situation | Useful for understanding game state and prediction context |
+| DVOA | Defense-adjusted Value Over Average | A play-based metric that adjusts performance for situation and opponent quality |
+| SRS | Simple Rating System | A rating approach that accounts for scoring margin and strength of schedule; commonly referenced in football statistics resources |
+| Predictive model | A statistical or machine learning system that estimates future outcomes from past data | This is the main analysis tool used in the project |
+| Pregame information | Information known before kickoff | Important because the model should only use data available before the game starts |
+| Advanced metrics | Statistics designed to capture performance more accurately than basic box-score totals | These often provide stronger insight than simple wins, yards, or points |
 
 ### Domain
 
