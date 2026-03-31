@@ -178,36 +178,45 @@ def main():
         # ------------------------------
         # build teams table
         # ------------------------------
-      
+
         teams = teams_raw.copy()
-
+        
+        # first standardize possible source column names into target names
         rename_map = {}
-        if "team_abbr" in teams.columns:
-            rename_map["team_abbr"] = "team_id"
-        elif "team" in teams.columns:
-            rename_map["team"] = "team_id"
 
-        if "team_name" in teams.columns:
-            rename_map["team_name"] = "team_name"
-        if "team_nick" in teams.columns:
-            rename_map["team_nick"] = "team_nick"
-        if "team_conf" in teams.columns:
-            rename_map["team_conf"] = "team_conf"
-        elif "team_conference" in teams.columns:
+        # only rename to team_id if team_id does not already exist
+        if "team_id" not in teams.columns:
+            if "team_abbr" in teams.columns:
+                rename_map["team_abbr"] = "team_id"
+            elif "team" in teams.columns:
+                rename_map["team"] = "team_id"
+
+        # only rename if the target name is not already present
+        if "team_name" not in teams.columns and "team_full_name" in teams.columns:
+            rename_map["team_full_name"] = "team_name"
+
+        if "team_conf" not in teams.columns and "team_conference" in teams.columns:
             rename_map["team_conference"] = "team_conf"
 
-        if "team_division" in teams.columns:
-            rename_map["team_division"] = "team_division"
-        elif "team_div" in teams.columns:
+        if "team_division" not in teams.columns and "team_div" in teams.columns:
             rename_map["team_div"] = "team_division"
 
         teams = teams.rename(columns=rename_map).copy()
 
+        # remove duplicate column names if any still remain
+        teams = teams.loc[:, ~teams.columns.duplicated()].copy()
+
+        # keep only columns that actually exist
         team_cols = [c for c in ["team_id", "team_name", "team_nick", "team_conf", "team_division"] if c in teams.columns]
-        teams = teams[team_cols].drop_duplicates().copy()
+        teams = teams[team_cols].copy()
 
         validate_required_columns(teams, ["team_id"], "teams")
-        teams = teams.sort_values("team_id").reset_index(drop=True)
+
+        # remove duplicate team rows
+        teams = teams.drop_duplicates(subset=["team_id"]).sort_values("team_id").reset_index(drop=True)
+
+        print("teams columns after cleaning:", teams.columns.tolist())
+        print("teams shape:", teams.shape)
 
         # ------------------------------
         # build team_games table
