@@ -83,11 +83,13 @@ Another reason I am motivated by this topic is that NFL analytics has become a m
 
 ### Domain
 
-this project lives in the domain of sports analytics, specifically predictive modeling for american football. nfl game outcomes are shaped by team strength, recent form, scheduling, and home-field effects, but prediction must be done carefully because postgame statistics can accidentally leak information into the model. a key challenge in this domain is designing features that are both predictive and genuinely pregame. that makes the problem a good match for a relational dataset with explicit time ordering, because the data must be organized so that each game can be joined to the correct prior information for both teams.
+This project lives in the domain of **sports analytics**, and more specifically in football analytics and predictive modeling. Sports analytics uses data to better understand team performance, player performance, strategy, and likely future outcomes. Within that larger domain, football analytics focuses on evaluating what leads to success in football games and how team strength can be measured more accurately than by basic record alone. Predicting NFL game outcomes is a natural problem in this domain because NFL games have clear results, well-documented statistics, and many measurable factors that may influence the final outcome.
+
+The NFL is also especially relevant as a sports analytics domain because it now includes both traditional statistics and much more advanced forms of data collection. The league’s Next Gen Stats system uses tracking technology to capture player movement and support advanced analysis. Public football analytics also increasingly uses concepts such as EPA, win probability, and opponent-adjusted efficiency metrics like DVOA. These ideas reflect the fact that football performance is complicated: two teams may have the same record but be very different in actual strength, consistency, or efficiency. A project like this belongs in the football analytics domain because it uses measurable information to estimate future game outcomes in a way that could support preparation, evaluation, and decision-making.
 
 ### Background Reading
 
-save copies of these files into the `background_reading/` folder. if a source is a webpage instead of a downloadable pdf, save it as a pdf from your browser.
+https://drive.google.com/drive/folders/1DmNz53sf4Q_i9nTIDYbz9nB2Qzlk0tSc?usp=sharing
 
 | index | title | brief description | file in folder |
 |---|---|---|---|
