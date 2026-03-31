@@ -1,4 +1,4 @@
-# ds 4320 project 1: pregame nfl win prediction
+# DS 4320 Project 1: Predicting NFL Home-Team Wins
 
 ## executive summary
 
