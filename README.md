@@ -4,6 +4,8 @@
 
 This repository contains my DS 4320 Project on predicting NFL regular-season game outcomes using a relational secondary dataset built from nflverse data accessed through the `nflreadpy` Python package. The project refines the broad problem of predicting sports game outcomes into a specific pregame classification task: estimating the probability that the home team will win an NFL regular-season game using only information available before kickoff. The repository includes project documentation, a press release, background readings, a linked data folder, SQL queries, Python code for data creation, and a reproducible modeling pipeline in Python, Markdown, and SQL.
 
+<br>
+
 ||Details|
 |---|---|
 | Name | Jolie Ng |
@@ -13,6 +15,8 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 | Data | FIX THIS [UVA OneDrive data folder](REPLACE-onedrive-link) |
 | Pipeline | [Notebook](pipeline/project_1_pipeline.ipynb) & [Markdown](pipeline/project_1_pipeline.md)   |
 | License | [MIT](LICENSE) |
+
+<br>
 
 ## Problem Definition
 
@@ -34,10 +38,11 @@ I chose this project because football is one of the subjects I care most about, 
 
 This project also matters to me because football is often discussed emotionally and based on intuition, but successful teams increasingly use analytics to support preparation, game planning, player evaluation, and decision-making. I want to understand that side of the sport better. Building a project around NFL game prediction would help me learn which factors actually matter when evaluating teams before a game, how to think critically about performance rather than relying only on record or reputation, and how data can support strategic football thinking. It would also help me practice turning a personal interest of mine into a structured data science problem with a reproducible solution.
 
-### Press Release Headline & Link FIX
+### Press Release
+ 
+[press_release.md](press_release.md)
 
-**Headline:** *New NFL Data Pipeline Turns Pregame Team Form Into Game-day Predictions*  
-**Link to Press Release:** [press_release.md](press_release.md)
+<br>
 
 ## Domain Exposition
 
