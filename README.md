@@ -84,7 +84,7 @@ Predicting NFL game outcomes is a natural problem in this domain because NFL gam
 
 ### Background Reading FIX
 
-The [`background_reading` folder](background_reading) contains readings that help explain the football analytics context of this project.
+The [`background_reading`](background_reading) folder contains readings that help explain the football analytics context of this project.
 
 | Index | Title | Brief Description | File |
 |---|---|---|---|
