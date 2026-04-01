@@ -217,14 +217,14 @@ days_rest_diff
 target_home_win
 ```
 
-### Data Table FIX
+### Data Table FIX LINK
 
-| Table | Description | CSV file |
+| Table | Description | File |
 |---|---|---|
-| `teams` | Team reference table containing identifiers and metadata | `data/teams.csv` |
-| `games` | One row per completed NFL regular-season game | `data/games.csv` |
-| `team_games` | One row per team per game with rolling leakage-safe pregame features | `data/team_games.csv` |
-| `matchups` | One row per game for final prediction modeling | `data/matchups.csv` |
+| `teams` | Team reference table containing identifiers and metadata | `teams.parquet` |
+| `games` | One row per completed NFL regular-season game with schedule and market context | `games.parquet` |
+| `team_games` | One row per team per game with leakage-safe rolling pregame features | `team_games.parquet` |
+| `matchups` | One row per game containing final home/away pregame features for modeling | `matchups.parquet` |
 
 ### Data Dictionary
 
@@ -250,8 +250,23 @@ target_home_win
 | `away_team` | string | Away team ID | `HOU` |
 | `home_score` | integer | Home final score | `25` |
 | `away_score` | integer | Away final score | `9` |
+| `home_rest` | numeric | Pregame home-team rest days from source data when available | `7` |
+| `away_rest` | numeric | Pregame away-team rest days from source data when available | `7` |
+| `home_moneyline` | numeric | Pregame home-team American moneyline | `-450` |
+| `away_moneyline` | numeric | Pregame away-team American moneyline | `350` |
+| `spread_line` | numeric | Pregame point spread | `9.5` |
+| `total_line` | numeric | Pregame projected total points | `43.5` |
+| `div_game` | integer/boolean | Indicator for division matchup | `0` |
+| `roof` | string | Stadium roof type when available | `outdoor` |
+| `surface` | string | Field surface when available | `grass` |
+| `temp` | numeric | Pregame temperature when available | `75` |
+| `wind` | numeric | Pregame wind speed when available | `8` |
 | `home_win` | integer | 1 if home team won, else 0 | `1` |
 | `winner_team` | string | Winner team ID | `BAL` |
+| `market_home_implied_prob` | float | Implied home-team win probability from home moneyline | `0.818` |
+| `market_away_implied_prob` | float | Implied away-team win probability from away moneyline | `0.222` |
+| `market_implied_prob_diff` | float | Home implied probability minus away implied probability | `0.596` |
+| `sched_rest_diff` | numeric | Home rest minus away rest | `0` |
 
 #### `team_games`
 
@@ -264,19 +279,23 @@ target_home_win
 | `week` | integer | Week number | `1` |
 | `gameday` | date | Game date | `2023-09-10` |
 | `is_home` | integer | 1 if home, 0 if away | `1` |
-| `points_for` | integer | Points scored by team | `25` |
-| `points_against` | integer | Points allowed by team | `9` |
+| `points_for` | integer | Points scored by the team | `25` |
+| `points_against` | integer | Points allowed by the team | `9` |
 | `win` | integer | 1 if team won, else 0 | `1` |
 | `games_played_before` | integer | Number of prior games entering this game | `0` |
 | `cum_wins_before` | integer | Prior cumulative wins | `0` |
 | `cum_losses_before` | integer | Prior cumulative losses | `0` |
-| `cum_points_for_before` | integer | Prior cumulative points scored | `0` |
-| `cum_points_against_before` | integer | Prior cumulative points allowed | `0` |
+| `cum_points_for_before` | numeric | Prior cumulative points scored | `0` |
+| `cum_points_against_before` | numeric | Prior cumulative points allowed | `0` |
 | `pregame_win_pct` | float | Win percentage before this game | `0.500` |
 | `pregame_points_for_pg` | float | Prior scoring average | `0.0` |
 | `pregame_points_against_pg` | float | Prior allowed average | `0.0` |
 | `pregame_point_diff_pg` | float | Prior point differential average | `0.0` |
-| `days_rest` | float | Days since previous game | `7.0` |
+| `pregame_last3_points_for_pg` | float | Average points scored over previous 3 games | `0.0` |
+| `pregame_last3_points_against_pg` | float | Average points allowed over previous 3 games | `0.0` |
+| `pregame_last3_win_pct` | float | Win percentage over previous 3 games | `0.500` |
+| `pregame_last3_point_diff_pg` | float | Recent-form point differential over previous 3 games | `0.0` |
+| `days_rest_calc` | numeric | Calculated days since prior game | `7` |
 
 #### `matchups`
 
@@ -290,33 +309,68 @@ target_home_win
 | `away_team` | string | Away team ID | `HOU` |
 | `home_score` | integer | Home final score | `25` |
 | `away_score` | integer | Away final score | `9` |
+| `home_rest` | numeric | Pregame home-team rest from source data | `7` |
+| `away_rest` | numeric | Pregame away-team rest from source data | `7` |
+| `home_moneyline` | numeric | Pregame home moneyline | `-450` |
+| `away_moneyline` | numeric | Pregame away moneyline | `350` |
+| `spread_line` | numeric | Pregame spread | `9.5` |
+| `total_line` | numeric | Pregame projected total points | `43.5` |
+| `div_game` | integer/boolean | Division-game indicator | `0` |
+| `roof` | string | Roof type | `outdoor` |
+| `surface` | string | Field surface | `grass` |
+| `temp` | numeric | Pregame temperature | `75` |
+| `wind` | numeric | Pregame wind speed | `8` |
 | `home_win` | integer | 1 if home team won, else 0 | `1` |
 | `winner_team` | string | Winner team ID | `BAL` |
-| `home_pregame_win_pct` | float | Home-team win percentage entering game | `0.500` |
-| `away_pregame_win_pct` | float | Away-team win percentage entering game | `0.500` |
+| `market_home_implied_prob` | float | Implied home win probability from moneyline | `0.818` |
+| `market_away_implied_prob` | float | Implied away win probability from moneyline | `0.222` |
+| `market_implied_prob_diff` | float | Home implied probability minus away implied probability | `0.596` |
+| `sched_rest_diff` | numeric | Home source rest minus away source rest | `0` |
+| `home_games_played_before` | integer | Prior home-team games played | `0` |
+| `away_games_played_before` | integer | Prior away-team games played | `0` |
+| `home_cum_wins_before` | integer | Prior cumulative home-team wins | `0` |
+| `away_cum_wins_before` | integer | Prior cumulative away-team wins | `0` |
+| `home_cum_losses_before` | integer | Prior cumulative home-team losses | `0` |
+| `away_cum_losses_before` | integer | Prior cumulative away-team losses | `0` |
+| `home_pregame_win_pct` | float | Home-team pregame win percentage | `0.500` |
+| `away_pregame_win_pct` | float | Away-team pregame win percentage | `0.500` |
 | `home_pregame_points_for_pg` | float | Home-team prior scoring average | `0.0` |
 | `away_pregame_points_for_pg` | float | Away-team prior scoring average | `0.0` |
 | `home_pregame_points_against_pg` | float | Home-team prior points allowed average | `0.0` |
 | `away_pregame_points_against_pg` | float | Away-team prior points allowed average | `0.0` |
 | `home_pregame_point_diff_pg` | float | Home-team prior point differential average | `0.0` |
 | `away_pregame_point_diff_pg` | float | Away-team prior point differential average | `0.0` |
-| `home_days_rest` | float | Home-team days since previous game | `7.0` |
-| `away_days_rest` | float | Away-team days since previous game | `7.0` |
+| `home_pregame_last3_win_pct` | float | Home-team recent 3-game win percentage | `0.500` |
+| `away_pregame_last3_win_pct` | float | Away-team recent 3-game win percentage | `0.500` |
+| `home_pregame_last3_point_diff_pg` | float | Home-team recent 3-game point differential average | `0.0` |
+| `away_pregame_last3_point_diff_pg` | float | Away-team recent 3-game point differential average | `0.0` |
+| `home_days_rest_calc` | numeric | Calculated home-team rest days | `7` |
+| `away_days_rest_calc` | numeric | Calculated away-team rest days | `7` |
 | `pregame_win_pct_diff` | float | Home minus away pregame win percentage | `0.0` |
 | `pregame_points_for_pg_diff` | float | Home minus away prior scoring average | `0.0` |
 | `pregame_points_against_pg_diff` | float | Home minus away prior allowed average | `0.0` |
 | `pregame_point_diff_pg_diff` | float | Home minus away prior point differential average | `0.0` |
-| `days_rest_diff` | float | Home minus away days of rest | `0.0` |
+| `games_played_before_diff` | integer | Home minus away prior games played | `0` |
+| `cum_wins_before_diff` | integer | Home minus away cumulative wins | `0` |
+| `cum_losses_before_diff` | integer | Home minus away cumulative losses | `0` |
+| `last3_win_pct_diff` | float | Home minus away recent 3-game win percentage | `0.0` |
+| `last3_point_diff_pg_diff` | float | Home minus away recent 3-game point differential average | `0.0` |
+| `calc_rest_diff` | numeric | Calculated home rest minus away rest | `0` |
 | `target_home_win` | integer | Final prediction target | `1` |
 
 ### Quantification of Uncertainty for Numerical Features
 
 | Numerical feature | Source of uncertainty | Quantitative discussion |
 |---|---|---|
-| `home_score / away_score` | Officially recorded outcomes | These are observed final values, so measurement uncertainty is very low, but they are not prediction inputs in the final model because they occur after kickoff |
-| `pregame_win_pct` | Small-sample instability early in the season | When `games_played_before` is small, one result changes the estimate sharply; after 1 prior game the value can only be 0 or 1 |
-| `pregame_points_for_pg` | Sampling variation across prior games | Early-season estimates are noisier because one unusually high- or low-scoring game strongly changes the average |
-| `pregame_points_against_pg` | Sampling variation across prior games | Same issue as above; defensive estimates stabilize only after more games are observed |
-| `pregame_point_diff_pg` | Uncertainty inherited from two averages | Because it is based on prior points scored and prior points allowed, it compounds uncertainty from both values |
-| `days_rest` | Exact from dates, incomplete as a fatigue proxy | The value is measured deterministically from game dates, but it does not capture travel difficulty, injury recovery, or practice intensity |
-| `difference features` | Propagated uncertainty from both teams | Each home-minus-away feature combines uncertainty from two team-level estimates, especially in early weeks |
+| `home_score / away_score` | Officially recorded outcomes | These are observed final values and are not used as predictors in the final model because they occur after kickoff |
+| `pregame_win_pct` | Small-sample instability early in the season | When `games_played_before` is small, one game can change the estimate sharply; after 1 prior game the value can only be 0 or 1 |
+| `pregame_points_for_pg` | Sampling variation across prior games | Early-season averages are noisy because one unusually high- or low-scoring game strongly changes the estimate |
+| `pregame_points_against_pg` | Sampling variation across prior games | Defensive estimates also stabilize only after several earlier games |
+| `pregame_point_diff_pg` | Inherits uncertainty from two averages | Since it is built from prior points scored and allowed, it compounds uncertainty from both |
+| `pregame_last3_win_pct` | Short-window volatility | This captures recent form but is intentionally sensitive to short-term variation, especially when fewer than 3 prior games exist |
+| `pregame_last3_point_diff_pg` | Short-window volatility | A three-game rolling average is responsive but noisier than full-history averages |
+| `home_rest / away_rest` | Source-field incompleteness | These values can be missing in some rows and may not capture all fatigue-related context such as travel burden |
+| `market_home_implied_prob / market_away_implied_prob` | Derived from moneylines | These are deterministic transformations of betting odds, but betting lines themselves reflect market opinion rather than certainty |
+| `spread_line / total_line` | Pregame market estimate | These are strong predictors, but they represent public expectations and can still be wrong on individual games |
+| `temp / wind` | Environmental context | These can help provide context but may be missing or imperfectly reflect playing conditions inside specific stadium settings |
+| `difference features` | Propagated uncertainty from both teams | Each home-minus-away feature combines uncertainty from two separate team-level estimates, especially in early weeks |
