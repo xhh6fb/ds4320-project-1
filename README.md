@@ -104,7 +104,7 @@ The raw data for this project were obtained from the nflverse ecosystem using th
 
 After loading the source data, I transformed them into a relational secondary dataset with four linked tables. First, I created a `teams` table that stores team identifiers and basic metadata. Second, I created a `games` table with one row per completed regular-season NFL game, including raw schedule-level context and pregame market variables when available. Third, I created a `team_games` table with one row per team per game so that leakage-safe rolling features could be computed separately for each team. Fourth, I created a `matchups` table with one row per game that combines home-team and away-team pregame features into a final modeling dataset. This makes the project dataset a reproducible secondary data product derived from the original nflverse schedule and team information.
 
-### Data Creation Code FIX
+### Data Creation Code
 
 The code below shows the python file used to create the secondary dataset and support the project pipeline.
 
@@ -140,7 +140,7 @@ Finally, I chose to compare logistic regression and random forest. Logistic regr
 
 ## Metadata
 
-### Schema ER Diagram FIX
+### Schema ER Diagram
 
 ```text
 teams
