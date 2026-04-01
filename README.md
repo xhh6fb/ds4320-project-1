@@ -1,4 +1,4 @@
-# DS 4320 Project 1: Predicting NFL Pregame Home-Team Win Probability
+# DS 4320 Project 1: Predicting NFL Home-Team Win Probability
 
 ## Executive Summary
 
