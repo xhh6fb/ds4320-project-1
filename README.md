@@ -13,7 +13,7 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 | DOI | FIX THIS [https://doi.org/10.1000/182](https://doi.org/10.1000/182) |
 | Press Release | [FIX HEADER](press_release.md) |
 | Data | FIX THIS [UVA OneDrive data folder](REPLACE-onedrive-link) |
-| Pipeline | [Notebook](pipeline/project_1_pipeline.ipynb) | [Markdown](pipeline/project_1_pipeline.md)   |
+| Pipeline | [Notebook](pipeline/project_1_pipeline.ipynb) & [Markdown](pipeline/project_1_pipeline.md)   |
 | License | [MIT](LICENSE.md) |
 
 <br>
