@@ -6,8 +6,9 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 
 <br>
 
-| Name | Jolie Ng |
+|  |  |
 |---|---|
+| Name | Jolie Ng |
 | NetID | xhh6fb |
 | DOI | FIX THIS [https://doi.org/10.1000/182](https://doi.org/10.1000/182) |
 | Press Release | [FIX HEADER](press_release.md) |
