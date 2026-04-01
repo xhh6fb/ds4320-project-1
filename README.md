@@ -82,7 +82,7 @@ This project lives in the domain of **sports analytics**, and more specifically 
 
 Predicting NFL game outcomes is a natural problem in this domain because NFL games have clearly recorded results, a stable schedule structure, and a large amount of historical information. Even at the schedule level, useful pregame signals exist, including team form, recent scoring trends, days of rest, division-game status, and market expectations from betting lines. This project belongs in the football analytics domain because it turns those measurable pregame signals into a reproducible prediction system rather than relying only on narrative, reputation, or intuition.
 
-### Background Reading FIX
+### Background Reading
 
 The [`background_reading`](background_reading) folder contains readings that help explain the football analytics context of this project.
 
