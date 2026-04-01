@@ -4,8 +4,6 @@
 
 This repository contains my DS 4320 Project on predicting NFL regular-season game outcomes using a relational secondary dataset built from nflverse data accessed through the `nflreadpy` Python package. The project refines the broad problem of predicting sports game outcomes into a specific pregame classification task: estimating the probability that the home team will win an NFL regular-season game using only information available before kickoff. The repository includes project documentation, a press release, background readings, a linked data folder, SQL queries, Python code for data creation, and a reproducible modeling pipeline in Python, Markdown, and SQL.
 
-<br>
-
 ||Details|
 |---|---|
 | Name | Jolie Ng |
@@ -15,8 +13,6 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 | Data | FIX THIS [UVA OneDrive data folder](REPLACE-onedrive-link) |
 | Pipeline | [Notebook](pipeline/project_1_pipeline.ipynb) & [Markdown](pipeline/project_1_pipeline.md)   |
 | License | [MIT](LICENSE) |
-
-<br>
 
 ## Problem Definition
 
