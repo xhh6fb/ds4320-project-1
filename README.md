@@ -12,7 +12,7 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 | NetID | xhh6fb |
 | DOI | FIX THIS [https://doi.org/10.1000/182](https://doi.org/10.1000/182) |
 | Press Release | [How NFL Fans Can Turn Pregame Data into Game-Day Predictions](press_release.md) |
-| Data | FIX THIS [UVA OneDrive Data Folder](https://myuva-my.sharepoint.com/:f:/g/personal/xhh6fb_virginia_edu/IgB_bJNRHTxFQpNb9mhZQecYARoTqJGe6Wlmdsgqk6q3WVA?e=GzQkZI) |
+| Data | [UVA OneDrive Data Folder](https://myuva-my.sharepoint.com/:f:/g/personal/xhh6fb_virginia_edu/IgB_bJNRHTxFQpNb9mhZQecYARoTqJGe6Wlmdsgqk6q3WVA?e=GzQkZI) |
 | Pipeline | [Notebook](pipeline/project_1_pipeline.ipynb) & [Markdown](pipeline/project_1_pipeline.md)   |
 | License | [MIT](LICENSE) |
 
