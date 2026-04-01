@@ -110,7 +110,7 @@ The code below shows the python file used to create the secondary dataset and su
 
 | File | What it does | Path |
 |---|---|---|
-| `pipeline/build_project_tables.py` | Loads raw data from `nflreadpy`, filters to completed regular-season games, creates the `teams`, `games`, `team_games`, and `matchups` tables, loads them into DuckDB, and exports the final tables as parquet files | [pipeline/build_project_tables.py](pipeline/build_project_tables.py) |
+| `pipeline/build_project_tables.py` | Loads raw data from `nflreadpy`, filters to completed regular-season games, creates the `teams`, `games`, `team_games`, and `matchups` tables, loads them into DuckDB, and exports the final tables as parquet files | [Link](pipeline/build_project_tables.py) |
 
 ### Bias Identification
 
