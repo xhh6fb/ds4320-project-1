@@ -142,7 +142,7 @@ Finally, I chose to compare logistic regression and random forest. Logistic regr
 
 ### Schema ER Diagram
 
-[ERD](figures/DS_4320_Project_1_ERD.png)
+[ERD](figures/DS4320_Project1_ERD.png)
 
 ### Data Table
 
