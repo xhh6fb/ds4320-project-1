@@ -2,15 +2,21 @@
 
 ## Executive Summary
 
-This repository contains my DS 4320 Project 1 on predicting NFL regular-season game outcomes using a relational secondary dataset built from nflverse data accessed through the `nflreadpy` Python package. The project refines the broad problem of predicting sports game outcomes into a specific pregame classification task: estimating the probability that the home team will win an NFL regular-season game using only information available before kickoff. The repository includes the project documentation, a separate press release, background readings, a linked data folder, SQL queries, Python scripts for data creation, and a reproducible modeling pipeline in Python, Markdown, and SQL.
+This repository contains my DS 4320 Project 1 on predicting NFL regular-season game outcomes using a relational secondary dataset built from nflverse data accessed through the `nflreadpy` Python package. The project refines the broad problem of predicting sports game outcomes into a specific pregame classification task: estimating the probability that the home team will win an NFL regular-season game using only information available before kickoff. The repository includes project documentation, a separate press release, background readings, a linked data folder, SQL queries, Python code for data creation, and a reproducible modeling pipeline in Python, Markdown, and SQL.
 
-**Name:** Jolie Ng  
-**NetID:** xhh6fb  
-**DOI:** FIX THIS
-**Press Release:** [press_release.md](press_release.md)  
-**Data:** FIX THIS [UVA OneDrive data folder](REPLACE-onedrive-link)  
-**Pipeline:** FIX THIS [pipeline/project_1_pipeline.ipynb](pipeline/project_1_pipeline.ipynb) and [pipeline/project_1_pipeline.md](pipeline/project_1_pipeline.md)  
-**License:** [MIT license](LICENSE)
+<br>
+
+| Spec | Value |
+|---|---|
+| Name | Jolie Ng |
+| NetID | xhh6fb |
+| DOI | FIX THIS [https://doi.org/10.1000/182](https://doi.org/10.1000/182) |
+| Press Release | [FIX HEADER](press_release.md) |
+| Data | FIX THIS [UVA OneDrive data folder](REPLACE-onedrive-link) |
+| Pipeline | [Pipeline Code](pipeline/project_1_pipeline.ipynb) and [Pipeline Markdown](pipeline/project_1_pipeline.md)   |
+| License | [MIT](LICENSE.md) |
+
+<br>
 
 ## Problem Definition
 
