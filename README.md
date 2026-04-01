@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This repository contains my DS 4320 Project 1 on predicting NFL regular-season game outcomes using a relational secondary dataset built from nflverse data accessed through the `nflreadpy` Python package. The project refines the broad problem of predicting sports game outcomes into a specific pregame classification task: estimating the probability that the home team will win an NFL regular-season game using only information available before kickoff. The repository includes project documentation, a separate press release, background readings, a linked data folder, SQL queries, Python code for data creation, and a reproducible modeling pipeline in Python, Markdown, and SQL.
+This repository contains my DS 4320 Project on predicting NFL regular-season game outcomes using a relational secondary dataset built from nflverse data accessed through the `nflreadpy` Python package. The project refines the broad problem of predicting sports game outcomes into a specific pregame classification task: estimating the probability that the home team will win an NFL regular-season game using only information available before kickoff. The repository includes project documentation, a press release, background readings, a linked data folder, SQL queries, Python code for data creation, and a reproducible modeling pipeline in Python, Markdown, and SQL.
 
 <br>
 
