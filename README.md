@@ -84,15 +84,15 @@ Predicting NFL game outcomes is a natural problem in this domain because NFL gam
 
 ### Background Reading FIX
 
-The `background_reading/` folder contains readings that help explain the football analytics context of this project.
+The [`background_reading` folder](background_reading) contains readings that help explain the football analytics context of this project.
 
-| Index | Title | Brief description | File in folder |
+| Index | Title | Brief Description | File |
 |---|---|---|---|
-| 1 | Predicting the Outcome of NFL Games Using Logistic Regression | Honors thesis focused directly on NFL game outcome prediction and logistic-regression model framing | `background_reading/01_predicting_outcome_of_nfl_games_using_logistic_regression.pdf` |
-| 2 | Modeling NFL Football Outcomes | Paper discussing statistical models for NFL outcome prediction | `background_reading/02_modeling_nfl_football_outcomes.pdf` |
-| 3 | The Effect of Attendance on Home Field Advantage in the NFL | Study of home-field effects and how attendance relates to them | `background_reading/03_nfl_home_field_advantage.pdf` |
-| 4 | Is the NFL Betting Market Efficient? | Economics paper on whether NFL betting prices are efficient | `background_reading/04_nfl_betting_market_efficiency.pdf` |
-| 5 | Assessing the Convergence of the Elo Ranking Model | Paper on Elo-model convergence and ranking stability | `background_reading/05_assessing_the_convergence_of_the_elo_ranking_model.pdf` |
+| 1 | Predicting the Outcome of NFL Games Using Logistic Regression | Honors thesis focused directly on NFL game outcome prediction and logistic-regression model framing | [Link](background_reading/01_predicting_outcome_of_nfl_games_using_logistic_regression.pdf) |
+| 2 | Modeling NFL Football Outcomes | Paper discussing statistical models for NFL outcome prediction | [Link](background_reading/02_modeling_nfl_football_outcomes.pdf) |
+| 3 | The Effect of Attendance on Home Field Advantage in the NFL | Study of home-field effects and how attendance relates to them | [Link](background_reading/03_nfl_home_field_advantage.pdf) |
+| 4 | Is the NFL Betting Market Efficient? | Economics paper on whether NFL betting prices are efficient | [Link](background_reading/04_nfl_betting_market_efficiency.pdf) |
+| 5 | Assessing the Convergence of the Elo Ranking Model | Paper on Elo-model convergence and ranking stability | [Link](background_reading/05_assessing_the_convergence_of_the_elo_ranking_model.pdf) |
 
 <br>
 
