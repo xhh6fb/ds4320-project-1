@@ -11,7 +11,7 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 | Name | Jolie Ng |
 | NetID | xhh6fb |
 | DOI | FIX THIS [https://doi.org/10.1000/182](https://doi.org/10.1000/182) |
-| Press Release | [FIX HEADER](press_release.md) |
+| Press Release | [How NFL Fans Can Turn Pregame Data into Game-Day Predictions](press_release.md) |
 | Data | FIX THIS [UVA OneDrive data folder](REPLACE-onedrive-link) |
 | Pipeline | [Notebook](pipeline/project_1_pipeline.ipynb) & [Markdown](pipeline/project_1_pipeline.md)   |
 | License | [MIT](LICENSE) |
@@ -40,7 +40,7 @@ This project also matters to me because football is often discussed emotionally 
 
 ### Press Release
  
-[press_release.md](press_release.md)
+[How NFL Fans Can Turn Pregame Data into Game-Day Predictions](press_release.md)
 
 <br>
 
