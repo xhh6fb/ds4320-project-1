@@ -32,18 +32,18 @@ To solve this problem, I built a relational secondary dataset from NFL data acce
 This structure matters because it allows the project to compute pregame features safely. For example, the `team_games` table makes it possible to calculate each team’s prior win percentage, prior scoring average, prior points allowed average, and recent three-game form using only earlier games. Those values are then merged into the `matchups` table so that each game has one final row containing both teams’ pregame signals.
 
 A major improvement in the final version of the project was adding stronger pregame context from the raw NFL schedule data. Earlier versions that relied mainly on rolling team-form features were not strong enough. The final solution still uses team-form summaries, but it also includes:
-- **spread line**
-- **moneyline odds**
-- **implied win probabilities from moneylines**
-- **rest measures**
-- **division-game indicator**
-- **weather-related context such as temperature and wind when available**
+- spread line
+- moneyline odds
+- implied win probabilities from moneylines
+- rest measures
+- division-game indicator
+- weather-related context such as temperature and wind when available
 
 That combination is important because it reflects the actual information environment before an NFL game begins. Team form captures how the teams have been performing, while market and schedule features capture broader expectations and context.
 
 To evaluate the prediction problem, I compared two different classification models:
-- **Logistic Regression**
-- **Random Forest**
+- Logistic Regression
+- Random Forest
 
 Logistic regression was used as the main interpretable baseline because the target is binary: either the home team wins or it does not. Random forest was included as a more flexible comparison model that can capture nonlinear relationships among pregame variables.
 
