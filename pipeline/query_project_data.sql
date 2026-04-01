@@ -10,7 +10,7 @@ FROM games
 GROUP BY season
 ORDER BY season;
 
--- query 2: weekly averages from the matchup table
+-- query 2: weekly matchup summary from the final modeling table
 
 SELECT
     season,
@@ -21,14 +21,19 @@ FROM matchups
 GROUP BY season, week
 ORDER BY season, week;
 
--- query 3: teams with the strongest average prior point differential entering games
+-- query 3: relationship between recent-form advantage and home-team win rate
 
 SELECT
-    home_team AS team_id,
-    AVG(home_pregame_point_diff_pg) AS avg_home_pregame_point_diff
+    CASE
+        WHEN last3_point_diff_pg_diff < 0 THEN 'home_recent_form_worse'
+        WHEN last3_point_diff_pg_diff = 0 THEN 'recent_form_equal'
+        WHEN last3_point_diff_pg_diff > 0 THEN 'home_recent_form_better'
+    END AS recent_form_group,
+    COUNT(*) AS games_n,
+    AVG(target_home_win) AS home_win_rate
 FROM matchups
-GROUP BY home_team
-ORDER BY avg_home_pregame_point_diff DESC;
+GROUP BY recent_form_group
+ORDER BY games_n DESC;
 
 -- query 4: relationship between rest differential and home-team win rate
 
