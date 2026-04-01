@@ -28,15 +28,15 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 
 ### Rationale for Refinement
 
-I refined the general problem of predicting sports game outcomes into predicting NFL regular-season home-team wins because the original problem was too broad to support a clear relational dataset and a focused predictive pipeline. “Sports games” could refer to many different leagues and sports with different rules, schedules, scoring systems, and useful statistics, which would make it difficult to define consistent variables, build a coherent relational model, and explain what exactly the model is predicting.
+I refined the general problem of predicting sports game outcomes into predicting NFL regular-season home-team wins because the original problem was too broad to support a clear dataset, a coherent relational structure, and a realistic prediction target. “Sports games” could refer to many different leagues and sports, each with different rules, schedules, scoring systems, and useful predictors. That would make it difficult to define consistent variables, construct meaningful linked tables, and explain what the model is trying to predict.
 
-By narrowing the project topic simply to NFL regular-season games, the problem becomes much more realistic and better structured for analysis. The NFL has a standardized season format, a manageable number of teams, clearly recorded game outcomes, and lots of historical data that can be used to construct pregame features. Limiting the project to pregame prediction also keeps the project meaningful, since the goal is to estimate the likely outcome before it begins and not to explain a result in hindsight after the game is over. This refinement makes the project more rigorous, more reproducible, and better aligned with the kind of forecasting problem that teams, analysts, and fans actually care about.
+By narrowing the project to NFL regular-season games, the problem becomes much more focused and manageable. The NFL has a standardized season format, clearly recorded game outcomes, a fixed set of teams, and public schedule-level data that can be transformed into pregame features. Limiting the task to pregame prediction also makes the project more realistic because the goal is to estimate the likely outcome before kickoff rather than describe what already happened after the game ended.
 
 ### Motivation
 
 I chose this project because football is one of the subjects I care most about, and I want to build toward a future career in the NFL. More specifically, I hope to work toward becoming a coach in the league, and ideally even the first female head coach in the NFL. Because of that, this project is not just an academic exercise for me. It connects directly to something I genuinely care about and want to understand at a deeper level.
 
-This project also matters to me because football is often discussed emotionally and based on intuition, but successful teams increasingly use analytics to support preparation, game planning, player evaluation, and decision-making. I want to understand that side of the sport better. Building a project around NFL game prediction would help me learn which factors actually matter when evaluating teams before a game, how to think critically about performance rather than relying only on record or reputation, and how data can support strategic football thinking. It would also help me practice turning a personal interest of mine into a structured data science problem with a reproducible solution.
+This project also matters to me because football is often discussed emotionally and based on intuition, but successful teams increasingly use analytics to support preparation, game planning, player evaluation, and decision-making. I want to understand that side of the sport better. Building a project around NFL game prediction helps me learn which factors actually matter when evaluating teams before a game, how to think critically about performance rather than relying only on record or reputation, and how data can support strategic football thinking.
 
 ### Press Release
  
@@ -51,37 +51,39 @@ This project also matters to me because football is often discussed emotionally 
 | Term | Meaning in this project | Why it matters |
 |---|---|---|
 | NFL | National Football League | The league this project focuses on |
-| regular-season game | An NFL game that is part of the standard season schedule, excluding playoffs | Keeps the prediction target consistent |
-| home-team win | A binary target equal to 1 if the home team scores more points than the away team | This is the prediction outcome |
+| regular-season game | An NFL game that is part of the standard season schedule, excluding playoffs | Keeps the scope and target consistent |
+| home-team win | A binary target equal to 1 if the home team scores more points than the away team | This is the final prediction outcome |
 | target variable | The value the model is trying to predict | Here it is whether the home team wins |
-| feature | An input variable used by the model | These are the pregame predictors |
-| pregame feature | A variable computed only from information available before kickoff | Prevents data leakage |
-| leakage | Using information from the current game or future games to predict the outcome | Would make the model misleadingly strong |
-| team reference table | A lookup table with team identifiers and metadata | Supports relational joins and documentation |
-| game table | One row per completed NFL regular-season game | Core fact table for outcomes |
-| team-game table | One row per team per game | Allows rolling pregame features to be calculated |
-| matchup table | One row per game with home and away pregame features | Final modeling table |
-| pregame win percentage | A team’s win rate before the current game | A simple measure of prior form |
-| pregame points for per game | A team’s average prior points scored entering the game | Captures offensive form |
-| pregame points against per game | A team’s average prior points allowed entering the game | Captures defensive form |
-| pregame point differential per game | Prior average points scored minus prior average points allowed | Summarizes overall prior strength |
-| days of rest | Days since the team’s previous game | Helps capture scheduling effects |
+| feature | An input variable used by the model | The model uses only pregame predictors |
+| pregame feature | A variable computed only from information available before kickoff | Prevents leakage |
+| leakage | Using current-game or future information to predict the current outcome | Would make the model misleadingly strong |
 | relational model | A data design built from linked tables with keys and joins | Required by the project rubric |
-| DuckDB | An in-process analytical database used here for loading CSV files and querying them with SQL | Satisfies the pipeline requirement and supports reproducibility |
-| logistic regression | A classification model that estimates the probability of a binary outcome | Baseline model for home-win prediction |
-| random forest | An ensemble machine-learning classification model built from many decision trees | More flexible comparison model |
-| ROC AUC | A metric that measures how well predicted probabilities rank positive cases over negative cases | Useful beyond raw accuracy |
-| confusion matrix | A table showing true positives, false positives, true negatives, and false negatives | Helps interpret model behavior |
+| team reference table | A lookup table with team identifiers and metadata | Supports joins and documentation |
+| game table | One row per completed NFL regular-season game | Core fact table for outcomes |
+| team-game table | One row per team per game | Allows rolling pregame features to be computed safely |
+| matchup table | One row per game with final pregame features | Final modeling table |
+| pregame win percentage | A team’s win rate before the current game | A simple measure of prior form |
+| pregame point differential per game | Prior average points scored minus prior average points allowed | Summarizes overall team strength |
+| recent form | A team’s performance over the most recent few games | Helps capture momentum or short-term performance changes |
+| spread line | Pregame betting spread | A strong public market signal about expected relative team strength |
+| moneyline | Pregame betting odds for each side | Can be converted into implied win probabilities |
+| implied probability | Probability implied by betting odds | Useful as a market-based predictor |
+| divisional game | A game between two teams from the same division | These games may behave differently from non-division games |
+| days of rest | Time since the previous game | Captures scheduling context |
+| DuckDB | An in-process analytical database used here for parquet loading and SQL analysis | Supports reproducibility and SQL-based analysis |
+| logistic regression | A classification model that estimates the probability of a binary outcome | Interpretable baseline model |
+| random forest | An ensemble tree-based classification model | More flexible nonlinear comparison model |
+| ROC AUC | A ranking-based metric for binary classification | Helps compare model performance beyond raw accuracy |
+| confusion matrix | A table of correct and incorrect classification outcomes | Helps interpret model behavior |
 
 ### Domain
 
-This project lives in the domain of **sports analytics**, and more specifically in football analytics and predictive modeling. Sports analytics uses data to better understand team performance, player performance, strategy, and likely future outcomes. Within that larger domain, football analytics focuses on measuring what leads to success in football games and how team strength can be estimated more accurately than by wins and losses alone.
+This project lives in the domain of **sports analytics**, and more specifically in football analytics and predictive modeling. Sports analytics uses data to better understand team performance, strategy, and likely future outcomes. Within that broader domain, football analytics focuses on measuring what leads to success in football games and how team strength can be estimated more accurately than by wins and losses alone.
 
-Predicting NFL game outcomes is a natural problem in this domain because NFL games have clear results, a fixed schedule structure, and a large amount of recorded historical information. Even simple game-level measures such as prior win percentage, scoring margin, and rest can reveal useful signals about team strength. This project belongs in the football analytics domain because it turns those measurable patterns into a reproducible pregame forecasting system. Instead of relying entirely on narrative or opinion, the project uses historical data to estimate how likely the home team is to win before a game begins.
+Predicting NFL game outcomes is a natural problem in this domain because NFL games have clearly recorded results, a stable schedule structure, and a large amount of historical information. Even at the schedule level, useful pregame signals exist, including team form, recent scoring trends, days of rest, division-game status, and market expectations from betting lines. This project belongs in the football analytics domain because it turns those measurable pregame signals into a reproducible prediction system rather than relying only on narrative, reputation, or intuition.
 
 ### Background Reading FIX
 
-https://drive.google.com/drive/folders/1DmNz53sf4Q_i9nTIDYbz9nB2Qzlk0tSc?usp=sharing  
 The `background_reading/` folder contains readings that help explain the football analytics context of this project.
 
 | Index | Title | Brief description | File in folder |
@@ -90,46 +92,51 @@ The `background_reading/` folder contains readings that help explain the footbal
 | 2 | Modeling NFL Football Outcomes | Paper discussing statistical models for NFL outcome prediction | `background_reading/02_modeling_nfl_football_outcomes.pdf` |
 | 3 | The Effect of Attendance on Home Field Advantage in the NFL | Study of home-field effects and how attendance relates to them | `background_reading/03_nfl_home_field_advantage.pdf` |
 | 4 | Is the NFL Betting Market Efficient? | Economics paper on whether NFL betting prices are efficient | `background_reading/04_nfl_betting_market_efficiency.pdf` |
-| 5 | Elo Model Convergence | Paper comparing Elo-style prediction ideas in sports forecasting context | `background_reading/05_elo_model_convergence_nfl.pdf` |
+| 5 | Assessing the Convergence of the Elo Ranking Model | Paper on Elo-model convergence and ranking stability | `background_reading/05_assessing_the_convergence_of_the_elo_ranking_model.pdf` |
+
+<br>
 
 ## Data Creation
 
 ### Provenance
 
-I obtained the raw data for this project from the nflverse ecosystem using the `nflreadpy` Python package. I used team-level reference data and NFL schedule/results data to create a secondary dataset for modeling. The package supplied the original source data, while all cleaning, filtering, reshaping, feature engineering, relational structuring, SQL loading, and modeling steps were performed by my own code.
+The raw data for this project were obtained from the nflverse ecosystem using the `nflreadpy` Python package. I used `nflreadpy` to access NFL schedules and team reference information, then filtered those source data to completed regular-season games across multiple seasons. The package provided the original source data, while all cleaning, filtering, reshaping, feature engineering, relational structuring, DuckDB loading, querying, and modeling steps were performed by my own code.
 
-I filtered the schedule data to completed **regular-season** NFL games from selected seasons, then transformed those raw data into a relational dataset with four linked tables. First, I created a `teams` table for team identifiers and metadata. Second, I created a `games` table with one row per completed regular-season game. Third, I created a `team_games` table with one row per team per game so that rolling pregame summaries could be calculated separately for each team. Fourth, I created a `matchups` table with one row per game containing the home and away pregame features plus the binary target variable. This dataset is therefore a **secondary data product** derived from the original nflverse releases.
+After loading the source data, I transformed them into a relational secondary dataset with four linked tables. First, I created a `teams` table that stores team identifiers and basic metadata. Second, I created a `games` table with one row per completed regular-season NFL game, including raw schedule-level context and pregame market variables when available. Third, I created a `team_games` table with one row per team per game so that leakage-safe rolling features could be computed separately for each team. Fourth, I created a `matchups` table with one row per game that combines home-team and away-team pregame features into a final modeling dataset. This makes the project dataset a reproducible secondary data product derived from the original nflverse schedule and team information.
 
 ### Data Creation Code FIX
 
-The code below shows the files used to create the secondary dataset and support the project pipeline.
+The code below shows the python file used to create the secondary dataset and support the project pipeline.
 
-| File | What it does | Link/path |
+| File | What it does | Path |
 |---|---|---|
-| `pipeline/build_project_tables.py` | Loads raw data from `nflreadpy`, filters to completed regular-season games, creates the `teams`, `games`, `team_games`, and `matchups` tables, and saves them as CSV and parquet files | [pipeline/build_project_tables.py](pipeline/build_project_tables.py) |
-| `pipeline/query_project_data.sql` | Contains example SQL queries used to inspect and summarize the relational tables after loading them into DuckDB | [pipeline/query_project_data.sql](pipeline/query_project_data.sql) |
-| `pipeline/project_1_pipeline.ipynb` | Full notebook pipeline that loads the saved tables into DuckDB, runs SQL queries, trains models, evaluates performance, and creates visualizations | [pipeline/project_1_pipeline.ipynb](pipeline/project_1_pipeline.ipynb) |
-| `pipeline/project_1_pipeline.md` | Markdown export of the notebook pipeline | [pipeline/project_1_pipeline.md](pipeline/project_1_pipeline.md) |
+| `pipeline/build_project_tables.py` | Loads raw data from `nflreadpy`, filters to completed regular-season games, creates the `teams`, `games`, `team_games`, and `matchups` tables, loads them into DuckDB, and exports the final tables as parquet files | [pipeline/build_project_tables.py](pipeline/build_project_tables.py) |
 
 ### Bias Identification
 
-Bias can enter this dataset through both the source data and the simplified feature choices. Team outcomes are affected by injuries, quarterback changes, weather, coaching adjustments, travel burden, and opponent quality, but not all of those factors are represented directly in a schedule-based dataset. As a result, the model may assign too much importance to simple prior scoring or win-percentage summaries while missing important contextual factors that influence real NFL games.
+Bias can enter this dataset through both the source data and the chosen predictors. Team outcomes are influenced by injuries, quarterback availability, coaching changes, travel burden, weather, and many other contextual factors that are not fully captured in schedule-level data. As a result, even a well-constructed model may miss important game-specific information.
 
-Another major source of bias is temporal leakage. If any feature accidentally includes information from the current game or from future games, the model would appear stronger than it really is. There is also a selection decision built into the project because it only analyzes regular-season NFL games rather than playoff games, college football games, or other football competitions. That is appropriate for the project goal, but it means the resulting model is not automatically generalizable outside that setting.
+Another important source of bias is temporal leakage. If any feature accidentally uses information from the game being predicted or from later games, the model would appear stronger than it really is. There is also a selection decision built into the project because it focuses only on completed NFL regular-season games. That is appropriate for the stated prediction target, but it means the model is not designed for playoff forecasting, college football, or other sports settings.
+
+Finally, market-based features such as spread and moneyline are powerful predictors, but they reflect the betting market’s aggregated expectations rather than purely team-level football performance. That is useful for prediction, but it means the project partly studies how well public pregame expectations align with outcomes, not just how well rolling team statistics do on their own.
 
 ### Bias Mitigation
 
-To reduce bias, I constructed all rolling team features using only information from games that happened **before** the game being predicted. That means pregame win percentage, pregame points scored per game, pregame points allowed per game, and pregame point differential per game are all leakage-safe summaries. I also exclude non-regular-season games so that the dataset remains aligned with the stated prediction target.
+To reduce bias, all team-level rolling features are constructed using only information from games that occurred **before** the game being predicted. That means pregame win percentage, scoring averages, point differential, and recent-form summaries are all leakage-safe. I also exclude non-regular-season games so that the dataset stays aligned with the project’s specific problem statement.
 
-Bias is also reduced by using a relational design with saved intermediate tables, which makes the feature-engineering process easier to inspect and audit. In addition, I evaluate the model using a **time-based split** instead of a random shuffle so that later seasons are held out as future-like test data. This can better reflect how a real forecasting system would be used and reduces the risk of information bleeding across the train/test boundary.
+Bias is further reduced by using a relational design with saved intermediate tables, which makes the feature engineering process easier to inspect and audit. In addition, I evaluate the model using a **time-based split** rather than a random shuffle so that later seasons are held out as future-like validation and test data. That better reflects how a real forecasting system would be used and reduces the risk of hidden leakage across train/test boundaries.
 
 ### Rationale for Critical Decisions
 
-A major critical decision was to structure the data into four linked tables because the project rubric requires the dataset to be constructed using the relational model with at least four tables. I chose `teams`, `games`, `team_games`, and `matchups` because that structure both satisfies the rubric and cleanly supports pregame feature engineering. In particular, the `team_games` table is essential because it provides a safe way to compute team-level rolling summaries before each game.
+A major critical decision was to structure the project as four linked tables because the assignment requires a relational dataset and because that structure makes the workflow much easier to understand. The `teams`, `games`, `team_games`, and `matchups` tables separate lookup data, raw game outcomes, team-level historical summaries, and final modeling inputs into clear steps. In particular, the `team_games` table is essential because it provides a safe way to compute rolling team features before each game.
 
-Another important decision was to predict **home-team win probability** rather than exact score or betting spread. That makes the target easier to explain, easier to evaluate, and less noisy. I also decided to begin with transparent pregame schedule-derived features rather than more advanced inputs that would require play-by-play engineering or external injury data. That keeps the project interpretable and reproducible while still producing a meaningful football prediction pipeline.
+Another important decision was to predict **home-team win probability** rather than exact score or betting spread. That makes the target easier to explain, easier to evaluate, and less noisy than score prediction. It also fits naturally with binary classification models such as logistic regression and random forest.
 
-A third critical decision was to use both a logistic-regression baseline and a random-forest comparison model. Logistic regression provides a clear and interpretable starting point for a binary outcome, while random forest offers a more flexible machine-learning comparison that can capture nonlinear interactions among the pregame features. This balances simplicity, interpretability, and predictive strength.
+A third important decision was to combine rolling football-performance features with schedule and market context from the raw schedule data. The earlier version of the project relied mainly on rolling averages and recent form, but those signals alone were not strong enough. By adding pregame spread, moneyline-based implied probabilities, rest measures, divisional-game status, and weather context, the project better reflects the real information available before an NFL game begins.
+
+Finally, I chose to compare logistic regression and random forest. Logistic regression provides an interpretable baseline for a binary target, while random forest offers a more flexible nonlinear model that can capture interactions and threshold effects among the pregame variables.
+
+<br>
 
 ## Metadata
 
