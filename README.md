@@ -7,6 +7,7 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 <br>
 
 |---|---|
+|---|---|
 | Name | Jolie Ng |
 | NetID | xhh6fb |
 | DOI | FIX THIS [https://doi.org/10.1000/182](https://doi.org/10.1000/182) |
@@ -14,7 +15,6 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 | Data | FIX THIS [UVA OneDrive data folder](REPLACE-onedrive-link) |
 | Pipeline | [Notebook](pipeline/project_1_pipeline.ipynb) & [Markdown](pipeline/project_1_pipeline.md)   |
 | License | [MIT](LICENSE.md) |
-|---|---|
 
 <br>
 
