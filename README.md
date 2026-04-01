@@ -6,8 +6,8 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 
 <br>
 
-|---|---|
 | Name | Jolie Ng |
+|---|---|
 | NetID | xhh6fb |
 | DOI | FIX THIS [https://doi.org/10.1000/182](https://doi.org/10.1000/182) |
 | Press Release | [FIX HEADER](press_release.md) |
@@ -23,7 +23,7 @@ This repository contains my DS 4320 Project on predicting NFL regular-season gam
 
 **Initial General Problem:** Predicting sports game outcomes.
 
-**Refined Specific Problem Statement:** Develop a data-driven system that predicts whether the home team will win an NFL regular-season game using only pregame information derived from each team’s earlier games. The final solution uses historical performance summaries such as prior win percentage, prior scoring average, prior points allowed average, prior point differential, and days of rest to estimate the probability of a home-team win before kickoff.
+**Refined Specific Problem Statement:** Develop a data-driven system that predicts whether the home team will win an NFL regular-season game using only pregame information derived from historical team form, recent team form, schedule context, and pregame market information. The final prediction target is a binary variable equal to 1 when the home team wins and 0 otherwise.
 
 ### Rationale for Refinement
 
