@@ -86,7 +86,7 @@ Predicting NFL game outcomes is a natural problem in this domain because NFL gam
 
 The [`background_reading`](background_reading) folder contains readings that help explain the football analytics context of this project.
 
-| Index | Title | Brief Description | File |
+| Index | Title | Brief Description | Path |
 |---|---|---|---|
 | 1 | Predicting the Outcome of NFL Games Using Logistic Regression | Honors thesis focused directly on NFL game outcome prediction and logistic-regression model framing | [Link](background_reading/01_predicting_outcome_of_nfl_games_using_logistic_regression.pdf) |
 | 2 | Modeling NFL Football Outcomes | Paper discussing statistical models for NFL outcome prediction | [Link](background_reading/02_modeling_nfl_football_outcomes.pdf) |
@@ -217,14 +217,14 @@ days_rest_diff
 target_home_win
 ```
 
-### Data Table FIX LINK
+### Data Table
 
-| Table | Description | File |
+| Data | Description | Path |
 |---|---|---|
-| `teams` | Team reference table containing identifiers and metadata | `teams.parquet` |
-| `games` | One row per completed NFL regular-season game with schedule and market context | `games.parquet` |
-| `team_games` | One row per team per game with leakage-safe rolling pregame features | `team_games.parquet` |
-| `matchups` | One row per game containing final home/away pregame features for modeling | `matchups.parquet` |
+| `teams` | Team reference table containing identifiers and metadata | [`teams.parquet`](https://myuva-my.sharepoint.com/:u:/g/personal/xhh6fb_virginia_edu/IQCs78KkRH5fRZO4i7-LF2KQAb_8JcCiCFyla5uDszr-xcI?e=Ioi9xR) |
+| `games` | One row per completed NFL regular-season game with schedule and market context | [`games.parquet`](https://myuva-my.sharepoint.com/:u:/g/personal/xhh6fb_virginia_edu/IQD3pgX0GCf_Sqk9_HAyxO1eASPFUFW0U3NLJZ33NGCv6fA?e=PqbryA) |
+| `team_games` | One row per team per game with leakage-safe rolling pregame features | [`team_games.parquet`](https://myuva-my.sharepoint.com/:u:/g/personal/xhh6fb_virginia_edu/IQAeTonPHtfSSqj6gHfRQEhFAdWSt3PmzrVopXmSZppRGY0?e=Hq4mPA) |
+| `matchups` | One row per game containing final home/away pregame features for modeling | [`matchups.parquet`](https://myuva-my.sharepoint.com/:u:/g/personal/xhh6fb_virginia_edu/IQDPH5QAzl6ASoSPrYcyS_KtAYzLKyagYTTsdMfJyXCBw_k?e=GsMW2H) |
 
 ### Data Dictionary
 
